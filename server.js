@@ -8,7 +8,6 @@ const path = require('path');
 // instantiate server
 const PORT = process.env.PORT || 3001;
 const app = express();
-// TODO: GET * route should return index.html
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -16,7 +15,7 @@ app.use(express.static('public'));
 
 
 
-// TODO: GET / notes route should return notes.html
+// GET / notes route should return notes.html
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/notes.html'));
 });
@@ -39,7 +38,7 @@ app.post('/api/notes', (req, res) => {
 
 
 
-
+//  GET * route should return index.html
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/index.html'));
 });

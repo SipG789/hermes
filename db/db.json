@@ -6,5 +6,9 @@
     {
         "title":"Get Note",
         "text":"A wild note has appeared!"
+    },
+    {
+        "title": "Grocery List",
+        "text": "Buy medicine for sick kid!"
     }
 ]
