@@ -1,5 +1,5 @@
 
-// TODO: require fs, express, apiroutes, ports, json 
+// require fs, express, apiroutes, ports, json 
 
 const express = require('express');
 const notes = require('./db/db.json');
@@ -50,13 +50,19 @@ app.post('/api/notes', (req, res) => {
     res.json(oldNotes);
 
 });
-// TODO: DELETE /api/notes/:id should receive a query parameter containing the id of a note to delete. 
+// DELETE /api/notes/:id should receive a query parameter containing the id of a note to delete. 
 app.delete('/api/notes/:id', (req, res) => {
-   
+   // read all notes from the db.json file, remove the note with the given id property
+    const prevNotes = JSON.parse(fs.readFileSync('./db/db.json'));
+
+    const deletedNotes = prevNotes.filter (note => note.id !== req.params.id);
+
+    fs.writeFileSync('./db/db.json', JSON.stringify(deletedNotes));
+
+    res.json(deletedNotes);
 });
 
 
-//TODO: read all notes from the db.json file, remove the note with the given id property
 
 
 
