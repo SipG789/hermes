@@ -24,17 +24,19 @@ app.get('/notes', (req, res) => {
 });
 
 
-// Create API's: GET notes 
+// Create API's: GET notes then rewrite the notes to the db.json file. 
 app.get('/api/notes', (req, res) => {
 
-    res.sendFile(path.join(__dirname, './db/db.json'));
+    const previousNotes = JSON.parse(fs.readFileSync('./db/db.json'));
+
+    res.json(previousNotes);
 });
 
 const noteId = uuidv4();
 
-// TODO: POST /api/notes should receive a new note to save on the request body, add it to the db.json file & return the new note to the client 
+//  POST /api/notes should receive a new note to save on the request body, add it to the db.json file & return the new note to the client 
 app.post('/api/notes', (req, res) => {
-    console.log(req.body);
+   // console.log(req.body);
     const oldNotes = JSON.parse(fs.readFileSync('./db/db.json'));
 
     req.body.id = oldNotes.length.noteId;
@@ -50,11 +52,11 @@ app.post('/api/notes', (req, res) => {
 });
 // TODO: DELETE /api/notes/:id should receive a query parameter containing the id of a note to delete. 
 app.delete('/api/notes/:id', (req, res) => {
+   
+});
 
-})
 
-
-//TODO: read all notes from the db.json file, remove the note with the given id property, then rewrite the notes to the db.json file. 
+//TODO: read all notes from the db.json file, remove the note with the given id property
 
 
 
