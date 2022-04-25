@@ -22,6 +22,11 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 ![screenshot](./public/assets/images/challenge-11.png)
   ### Usage
   This application runs on server port 3001, after you install and run npm start be sure to navigate to your local host 3001 port so that you can view and run the application. 
+  
+  
+  You can view the deployed site through Heroku:
+  https://sheltered-reef-72388.herokuapp.com/notes
+
 
   ### Instructions
   ```
