@@ -4,6 +4,9 @@
 const express = require('express');
 const notes = require('./db/db.json');
 const path = require('path');
+const fs = require('fs');
+// Find a way to give each note a unique id when it's saved (look into npm packages that could do this)
+const { v4: uuidv4 } = require('uuid');
 
 // instantiate server
 const PORT = process.env.PORT || 3001;
@@ -21,20 +24,37 @@ app.get('/notes', (req, res) => {
 });
 
 
-// Create API's
+// Create API's: GET notes 
 app.get('/api/notes', (req, res) => {
-    res.json(notes);
+
+    res.sendFile(path.join(__dirname, './db/db.json'));
 });
+
+const noteId = uuidv4();
 
 // TODO: POST /api/notes should receive a new note to save on the request body, add it to the db.json file & return the new note to the client 
 app.post('/api/notes', (req, res) => {
     console.log(req.body);
-    req.body.id = notes.length.toString();
-});
-// TODO: Find a way to give each note a unique id when it's saved (look into npm packages that could do this)
+    const oldNotes = JSON.parse(fs.readFileSync('./db/db.json'));
 
+    req.body.id = oldNotes.length.noteId;
+
+    const addNote = req.body;
+    addNote.id = noteId;
+    oldNotes.push(addNote);
+
+    fs.writeFileSync('./db/db.json', JSON.stringify(oldNotes));
+
+    res.json(oldNotes);
+
+});
 // TODO: DELETE /api/notes/:id should receive a query parameter containing the id of a note to delete. 
-    //TODO: read all notes from the db.json file, remove the note with the given id property, then rewrite the notes to the db.json file. 
+app.delete('/api/notes/:id', (req, res) => {
+
+})
+
+
+//TODO: read all notes from the db.json file, remove the note with the given id property, then rewrite the notes to the db.json file. 
 
 
 

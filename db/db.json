@@ -1,14 +1,1 @@
-[
-    {
-        "title":"Test Title",
-        "text":"Test text"
-    },
-    {
-        "title":"Get Note",
-        "text":"A wild note has appeared!"
-    },
-    {
-        "title": "Grocery List",
-        "text": "Buy medicine for sick kid!"
-    }
-]
+[{"title":"Test Title","text":"Test text"},{"title":"Get Note","text":"A wild note has appeared!"},{"title":"Grocery List","text":"Buy medicine for sick kid!"},{"title":"New Note","text":"Let's see if this works!","id":"2edc5fa7-68c5-416a-a6bc-a2ec240f917b"},{"title":"5th Note ","text":"This is the fifth note ","id":"6fa8ac05-2c7a-4315-98a2-7a2af036ed88"}]
